@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { getAllBeers } from "./services/beerService";
+import Beer from "./components/Beer";
+import From from "./components/Form";
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { allBeers: [] };
+  }
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  componentDidMount() {
+    getAllBeers().then(beers => {
+      this.setState({
+        allBeers: beers
+      });
+    });
+  }
+
+  render() {
+    if (this.state.allBeers.length === 0) {
+      return <h3>Loading....</h3>;
+    }
+
+    const allBeersComponents = this.state.allBeers.map(beer => (
+      <Beer name={beer.name} url={beer.imgSrc} ibu={beer.IBU} />
+    ));
+
+    return (
+      <section>
+        <h3>helllo!!!!</h3>
+        <From />
+        {allBeersComponents}
+      </section>
+    );
+  }
 }
 
 export default App;

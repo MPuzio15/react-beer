@@ -1,0 +1,24 @@
+img {
+  max-width: 200px;
+  max-height: 300px;
+  margin: 0 auto;
+  display: block;
+}
+
+section {
+  display: inline-block;
+  margin: 5px;
+}
+
+.beer {
+  border: 5px solid red;
+}
+
+.counter-component,
+.rate-component {
+  border: 5px dodgerblue dotted;
+}
+
+.form-component{
+  border: 5px dashed saddlebrown;
+}
