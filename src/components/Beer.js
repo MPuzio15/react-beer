@@ -1,7 +1,7 @@
 import React from "react";
 
-import Counter from "./Counter";
-import Rate from "./Rate";
+import Counter from "./counter";
+import Rate from "./rate";
 
 export default class Beer extends React.Component {
   constructor(props) {

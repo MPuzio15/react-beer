@@ -18,9 +18,14 @@ export default class From extends Component {
     });
   };
 
+  handleSubmit = event => {
+    event.preventDefault();
+    console.log(this.state);
+  };
+
   render() {
     return (
-      <form className="form-component">
+      <form onSubmit={this.handleSubmit} className="form-component">
         <h3>State Forma: {JSON.stringify(this.state)}</h3>
         <input
           type="text"
@@ -32,6 +37,7 @@ export default class From extends Component {
           value={this.state.age}
           onChange={this.onAgeChange}
         />
+        <input type="submit" />
       </form>
     );
   }
